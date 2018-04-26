@@ -1,6 +1,6 @@
 export class AppBackEndApi {
   // Back End Host Address
-  static backendHost = 'http://localhost:8080';
+  static backendHost = 'http://ci.laoliang.ink:8080';
 
   // RESTful API (user/*)
   static userRegisterUrl = AppBackEndApi.backendHost + '/user/register';
