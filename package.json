@@ -1,5 +1,5 @@
 {
-  "main": "index.js",
+  "main": "index.ts",
   "name": "easy-ci-web",
   "version": "0.0.0",
   "license": "MIT",

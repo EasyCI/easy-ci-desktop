@@ -1,36 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
-  <div class="col text-left d-inline-block">
+<div scroll="no"
+     style="background-color: #343A40; position: fixed; z-index: 999; overflow: auto; height: 102%; width: 115px;">
+  <div class="col text-left d-inline-block" style="margin-top: 9px; margin-left: 15px;">
     <button class="btn btn-dark" (click)="switchShowFlowList()" style="margin-left: -20px;">
-      <span class="oi oi-loop-square"></span>
       <b *ngIf="!flowListStatus">工作流 &nbsp;<span class="oi oi-caret-right small"></span></b>
       <b *ngIf="flowListStatus"><span class="oi oi-caret-left small"></span> &nbsp;CLOSE</b>
     </button>
   </div>
-  <div class="text-light row" routerLink="/" style="padding-left: 200px; padding-right: 200px;">
-    <img src="assets/img/logo-white.png" height="28">&nbsp;&nbsp;
-    <h4><b> EasyCI </b></h4>
+  <div class="text-light" routerLink="/" style="position: absolute; top: 35%; margin-left: 20px;">
+    <img src="assets/img/logo-white.png" height="40" style="margin-left: 15px;">
+    <h4 style="margin-top: 10px;"><b> EasyCI </b></h4>
   </div>
-  <div ngbDropdown class="col text-right d-inline-block">
-    <button class="btn btn-dark" id="dropdownBasic2" ngbDropdownToggle style="margin-right: -20px;">
-      <span class="oi oi-person"></span><b> 我的</b>
+  <div style="position: absolute; bottom: 2%;  margin-left: 15px;">
+    <a class="btn btn-dark" *ngIf="loginResponse != null" routerLink="/user/setting">
+      <span class="oi oi-cog"></span> 设置</a>
+    <a class="btn btn-dark" href="https://github.com/EasyCI/easy-ci-doc/blob/master/README.md" target="_blank">
+      <span class="oi oi-compass"></span> 帮助</a>
+    <a class="btn btn-dark" href="http://laoliang.ink/about" target="_blank">
+      <span class="oi oi-bullhorn"></span> 关于</a>
+    <hr>
+    <button class="btn btn-dark" (click)="loginOrLogOut()">
+      <span class="oi {{loginOrOutIcon}}"></span> {{loginOrOut}}
     </button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic2" style="margin-left: -10px;">
-      <a class="dropdown-item" *ngIf="loginResponse != null" routerLink="/user/setting">
-        <span class="oi oi-cog"></span> 设置</a>
-      <a class="dropdown-item" href="https://github.com/EasyCI/easy-ci-doc/blob/master/README.md" target="_blank">
-        <span class="oi oi-compass"></span> 帮助</a>
-      <a class="dropdown-item" href="http://laoliang.ink/about" target="_blank">
-        <span class="oi oi-bullhorn"></span> 关于</a>
-      <hr>
-      <button class="dropdown-item" (click)="loginOrLogOut()">
-        <span class="oi {{loginOrOutIcon}}"></span> {{loginOrOut}}
-      </button>
-    </div>
   </div>
-</nav>
+</div>
 <div id="flowList" *ngIf="flowListStatus"
      style="background-color: #E0E2E4; position: fixed; z-index: 99; overflow: auto;
-     margin-top: 52px; padding-bottom: 52px; height: 100%; width: 18%;">
+     margin-left: 115px; padding-bottom: 52px; height: 100%; width: 18%;">
   <div style="margin: 20px;">
     <button class="btn btn-light" *ngIf="loginResponse == null" routerLink="/user/login"
             style="width: 100%;">
